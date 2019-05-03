@@ -13,8 +13,16 @@ public abstract class Box<T extends BoxObj> {
         mVersion = version;
     }
 
+    public String getName() {
+        return mName;
+    }
+
+    public int getVersion() {
+        return mVersion;
+    }
+
     public BoxQuery<T> obtainQuery(){
-        return new BoxQuery<T>(this, mName);
+        return new BoxQuery<T>(this);
     }
 
     protected abstract List<T> query(BoxQuery query);
@@ -23,7 +31,11 @@ public abstract class Box<T extends BoxObj> {
 
     public abstract void put(T... t);
 
+    public abstract void put(List<T> list);
+
     public abstract void delete(T... t);
+
+    public abstract void delete(List<T> list);
 
     public abstract void delete(long id);
 

@@ -1,7 +1,8 @@
 package com.campus.system.tracker.model;
 
-public class Tracker {
-    private long mId;
+import com.campus.system.storage.model.BoxObj;
+
+public class Tracker extends BoxObj {
     private String mTrackerId;
     private String mUserId;
     private String mLayout;
@@ -10,12 +11,8 @@ public class Tracker {
     private String mExtra;
     private long mCreateTime;
 
-    public long getId() {
-        return mId;
-    }
-
-    public void setId(long id) {
-        mId = id;
+    public Tracker(long ID) {
+        super(ID);
     }
 
     public String getTrackerId() {

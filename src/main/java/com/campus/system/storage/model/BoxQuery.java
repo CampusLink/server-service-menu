@@ -15,8 +15,8 @@ public class BoxQuery<T extends BoxObj> {
     private String mOrderDesc = "";//排序语句
     private List<String> mKeys;//要返回的字段
 
-    public BoxQuery(Box<T> box, String boxName) {
-        mBoxName = boxName;
+    protected BoxQuery(Box<T> box) {
+        mBoxName = box.getName();
         mFilters = new ArrayList();
         mKeys = new ArrayList();
         mBox = box;

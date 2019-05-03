@@ -11,9 +11,9 @@ public abstract class TrackerService extends Service {
 
     public abstract void insertPatchTracker(String token, List<Tracker> trackers);
 
-    public abstract List<Tracker> queryTrackersByLayout(String token, String layout);
+    public abstract List<Tracker> queryTrackersByLayout(String token, String layout, long preId, int pageSize);
 
-    public abstract List<Tracker> queryTrackersByItem(String token, String layout, String item);
+    public abstract List<Tracker> queryTrackersByItem(String token, String layout, String item, long preId, int pageSize);
 
-    public abstract List<Tracker> queryTrackersByOperate(String token, String layout, String item, String operate);
+    public abstract List<Tracker> queryTrackersByOperate(String token, String layout, String item, String operate, long preId, int pageSize);
 }
