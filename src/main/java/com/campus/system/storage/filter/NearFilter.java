@@ -12,4 +12,16 @@ public class NearFilter extends IFilter {
         mLatName = latName;
         mLngName = lngName;
     }
+
+    public IPoint getPoint() {
+        return mPoint;
+    }
+
+    public String getLatName() {
+        return mLatName;
+    }
+
+    public String getLngName() {
+        return mLngName;
+    }
 }

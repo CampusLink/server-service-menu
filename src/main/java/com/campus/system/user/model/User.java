@@ -1,14 +1,29 @@
 package com.campus.system.user.model;
 
+
+import com.campus.system.storage_annotation.annotation.*;
+
+import java.util.Date;
+
+@Enity(name = "user")
 public class User {
-    private long mId;//数据库ID
+    @Id
+    private long mId;
+    @StringProperty(nameInDb = "userId", length = 50)
     private String mUserId;
+    @StringProperty(nameInDb = "phone", length = 18)
     private String mPhone;
+    @StringProperty(nameInDb = "password", length = 20)
     private String mPassword;
+    @StringProperty(nameInDb = "name", length = 10)
     private String mName;
-    private long mBirth;
+    @DateProperty(nameInDb = "birth")
+    private Date mBirth;
+    @IntProperty(nameInDb = "sex")
     private int mSex;
+    @StringProperty(nameInDb = "sign")
     private String mSign;
+    @StringProperty(nameInDb = "head")
     private String mHead;
     private String mNickName;
     private String mOrgId;
@@ -54,11 +69,11 @@ public class User {
         mName = name;
     }
 
-    public long getBirth() {
+    public Date getBirth() {
         return mBirth;
     }
 
-    public void setBirth(long birth) {
+    public void setBirth(Date birth) {
         mBirth = birth;
     }
 

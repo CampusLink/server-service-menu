@@ -14,4 +14,11 @@ public class GreaterThanEqualToFilter extends IFilter{
         this.value = value;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public Object getValue() {
+        return value;
+    }
 }

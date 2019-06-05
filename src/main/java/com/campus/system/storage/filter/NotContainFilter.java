@@ -14,4 +14,11 @@ public class NotContainFilter extends IFilter{
         this.value = value;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public Object getValue() {
+        return value;
+    }
 }

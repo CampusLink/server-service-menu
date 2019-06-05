@@ -6,11 +6,19 @@ package com.campus.system.storage.filter;
  */
 public class StartWithFilter extends IFilter{
     private String key;
-    private Object value;
+    private String value;
 
-    public StartWithFilter(String key, Object value) {
+    public StartWithFilter(String key, String value) {
         this.tag = "startwith";
         this.key = key;
         this.value = value;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public String getValue() {
+        return value;
     }
 }

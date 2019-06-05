@@ -1,19 +1,10 @@
 package com.campus.system.status.model;
 
 public class Tag {
-    private long mId;
     private String mTagId;
     private String mName;
     private String mUserId;
     private long mCreateTime;
-
-    public long getId() {
-        return mId;
-    }
-
-    public void setId(long id) {
-        mId = id;
-    }
 
     public String getTagId() {
         return mTagId;

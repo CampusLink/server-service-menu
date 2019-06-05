@@ -1,7 +1,6 @@
 package com.campus.system.featureconfig.model;
 
 public class FeatureConfig {
-    private long mId;
     private String mFeatureId;
     private String mUserId;//是谁添加的这个AB
     private String mName;
@@ -9,14 +8,6 @@ public class FeatureConfig {
     private String mDesc;//这个AB是用来干什么的
     private int mStatus;//当前AB的状态
     private long mCreateTime;//AB的创建时间
-
-    public long getId() {
-        return mId;
-    }
-
-    public void setId(long id) {
-        mId = id;
-    }
 
     public String getFeatureId() {
         return mFeatureId;

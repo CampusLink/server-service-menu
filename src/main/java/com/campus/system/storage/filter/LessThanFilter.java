@@ -13,4 +13,12 @@ public class LessThanFilter extends IFilter{
         this.key = key;
         this.value = value;
     }
+
+    public String getKey() {
+        return key;
+    }
+
+    public Object getValue() {
+        return value;
+    }
 }

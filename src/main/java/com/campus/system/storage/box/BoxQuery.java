@@ -1,19 +1,21 @@
-package com.campus.system.storage.model;
+package com.campus.system.storage.box;
 
 import com.campus.system.storage.filter.*;
+import com.campus.system.storage.model.IPoint;
+import com.campus.system.storage_annotation.property.Property;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoxQuery<T extends BoxObj> {
+public class BoxQuery<T> {
     private Box<T> mBox;
     private List<IFilter> mFilters;
     private String mBoxName;//要查询的对象的名字
     private String mTag;//用该查询去干啥的唯一标识，为了在回调中进行区别对待
     private int mLimit = -1;//要查询多少条 若为-1 则不对条数做限制
-    private String mOrderAsc = "";//排序语句
-    private String mOrderDesc = "";//排序语句
-    private List<String> mKeys;//要返回的字段
+    private Property mOrderAsc;//排序语句
+    private Property mOrderDesc;//排序语句
+    private List<Property> mKeys;//要返回的字段
 
     protected BoxQuery(Box<T> box) {
         mBoxName = box.getName();
@@ -27,8 +29,8 @@ public class BoxQuery<T extends BoxObj> {
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereEqualTo(String key, Object value){
-        EqualToFilter etf = new EqualToFilter(key, value);
+    public BoxQuery whereEqualTo(Property key, Object value){
+        EqualToFilter etf = new EqualToFilter(key.getNameInDb(), value);
         mFilters.add(etf);
         return this;
     }
@@ -38,8 +40,8 @@ public class BoxQuery<T extends BoxObj> {
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereNotEqualTo(String key, Object value){
-        NotEqualToFilter netf = new NotEqualToFilter(key, value);
+    public BoxQuery whereNotEqualTo(Property key, Object value){
+        NotEqualToFilter netf = new NotEqualToFilter(key.getNameInDb(), value);
         mFilters.add(netf);
         return this;
     }
@@ -49,8 +51,8 @@ public class BoxQuery<T extends BoxObj> {
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereGreaterThan(String key, double value){
-        GreaterThanFilter gtf = new GreaterThanFilter(key, value);
+    public BoxQuery whereGreaterThan(Property key, Object value){
+        GreaterThanFilter gtf = new GreaterThanFilter(key.getNameInDb(), value);
         mFilters.add(gtf);
         return this;
     }
@@ -60,8 +62,8 @@ public class BoxQuery<T extends BoxObj> {
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereLessThan(String key, double value){
-        LessThanFilter ltf = new LessThanFilter(key, value);
+    public BoxQuery whereLessThan(Property key, Object value){
+        LessThanFilter ltf = new LessThanFilter(key.getNameInDb(), value);
         mFilters.add(ltf);
         return this;
     }
@@ -71,8 +73,8 @@ public class BoxQuery<T extends BoxObj> {
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereGreaterThanEqualTo(String key, double value){
-        GreaterThanEqualToFilter gtetf = new GreaterThanEqualToFilter(key, value);
+    public BoxQuery whereGreaterThanEqualTo(Property key, Object value){
+        GreaterThanEqualToFilter gtetf = new GreaterThanEqualToFilter(key.getNameInDb(), value);
         mFilters.add(gtetf);
         return this;
     }
@@ -82,8 +84,8 @@ public class BoxQuery<T extends BoxObj> {
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereLessThanEqualTo(String key, double value){
-        LessThanEqualToFilter ltetf = new LessThanEqualToFilter(key, value);
+    public BoxQuery whereLessThanEqualTo(Property key, Object value){
+        LessThanEqualToFilter ltetf = new LessThanEqualToFilter(key.getNameInDb(), value);
         mFilters.add(ltetf);
         return this;
     }
@@ -93,8 +95,8 @@ public class BoxQuery<T extends BoxObj> {
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereContains(String key, String value){
-        ContainFilter cf = new ContainFilter(key, value);
+    public BoxQuery whereContains(Property key, String value){
+        ContainFilter cf = new ContainFilter(key.getNameInDb(), value);
         mFilters.add(cf);
         return this;
     }
@@ -104,8 +106,8 @@ public class BoxQuery<T extends BoxObj> {
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereNotContains(String key, String value){
-        NotContainFilter ncf = new NotContainFilter(key, value);
+    public BoxQuery whereNotContains(Property key, String value){
+        NotContainFilter ncf = new NotContainFilter(key.getNameInDb(), value);
         mFilters.add(ncf);
         return this;
     }
@@ -114,8 +116,8 @@ public class BoxQuery<T extends BoxObj> {
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereStartWith(String key, String value){
-        StartWithFilter swf = new StartWithFilter(key, value);
+    public BoxQuery whereStartWith(Property key, String value){
+        StartWithFilter swf = new StartWithFilter(key.getNameInDb(), value);
         mFilters.add(swf);
         return this;
     }
@@ -125,8 +127,8 @@ public class BoxQuery<T extends BoxObj> {
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereEndWith(String key, String value){
-        EndWithFilter ewf = new EndWithFilter(key, value);
+    public BoxQuery whereEndWith(Property key, String value){
+        EndWithFilter ewf = new EndWithFilter(key.getNameInDb(), value);
         mFilters.add(ewf);
         return this;
     }
@@ -165,12 +167,12 @@ public class BoxQuery<T extends BoxObj> {
         return this;
     }
 
-    public BoxQuery orderByASC(String key){
+    public BoxQuery orderByASC(Property key){
         mOrderAsc = key;
         return this;
     }
 
-    public BoxQuery orderByDESC(String key){
+    public BoxQuery orderByDESC(Property key){
         mOrderDesc = key;
         return this;
     }
@@ -179,8 +181,15 @@ public class BoxQuery<T extends BoxObj> {
      * 设置查询返回的字段
      * @param keys
      */
-    public BoxQuery setKeys(List<String> keys){
+    public BoxQuery setKeys(List<Property> keys){
         mKeys.addAll(keys);
+        return this;
+    }
+
+    public BoxQuery addKey(Property key){
+        if(!mKeys.contains(key)){
+            mKeys.add(key);
+        }
         return this;
     }
 
@@ -188,11 +197,31 @@ public class BoxQuery<T extends BoxObj> {
         return mBox.query(this);
     }
 
-    public void queryInBackground(BoxQueryListener<T> listener){
-        mBox.queryInBackground(this, listener);
+    public List<IFilter> getFilters(){
+        return mFilters;
     }
 
-    public static interface BoxQueryListener<T>{
-        public void done();
+    public String getBoxName() {
+        return mBoxName;
+    }
+
+    public String getTag() {
+        return mTag;
+    }
+
+    public int getLimit() {
+        return mLimit;
+    }
+
+    public Property getOrderAsc() {
+        return mOrderAsc;
+    }
+
+    public Property getOrderDesc() {
+        return mOrderDesc;
+    }
+
+    public List<Property> getKeys() {
+        return mKeys;
     }
 }

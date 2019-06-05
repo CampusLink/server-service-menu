@@ -1,7 +1,6 @@
 package com.campus.system.user.model;
 
 public class OrgReq {
-    private long mId;
     private String mOrgReqId;
     private String mUserId;
     private String mOrgId;
@@ -9,14 +8,6 @@ public class OrgReq {
     private long mCreateTime;
     private int mStatus;
     private String mAdminId;//那个管理员操作的
-
-    public long getId() {
-        return mId;
-    }
-
-    public void setId(long id) {
-        mId = id;
-    }
 
     public String getOrgReqId() {
         return mOrgReqId;

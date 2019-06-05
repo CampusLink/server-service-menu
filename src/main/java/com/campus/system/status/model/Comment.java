@@ -1,21 +1,12 @@
 package com.campus.system.status.model;
 
-public class Comment {
-    private long mId;
+public class Comment{
     private String mStatusId;//评论所属的动态
     private String mContent;//评论的内容
     private String mUserId;//谁发表的评论
     private String mReciveId;//发给哪个用户的评论
     private long mCreateTime;
     private int mStatus;//当前评论的状态
-
-    public long getId() {
-        return mId;
-    }
-
-    public void setId(long id) {
-        mId = id;
-    }
 
     public String getStatusId() {
         return mStatusId;
@@ -55,6 +46,14 @@ public class Comment {
 
     public void setCreateTime(long createTime) {
         mCreateTime = createTime;
+    }
+
+    public int getStatus() {
+        return mStatus;
+    }
+
+    public void setStatus(int status) {
+        mStatus = status;
     }
 
     public static interface CommentStatus{

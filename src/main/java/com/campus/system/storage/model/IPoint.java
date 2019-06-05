@@ -1,27 +1,19 @@
 package com.campus.system.storage.model;
 
 public class IPoint {
-    private double lat;
-    private double lng;
+    private double mLng;
+    private double mLat;
 
-    public IPoint(double lat, double lng) {
-        this.lat = lat;
-        this.lng = lng;
-    }
-
-    public double getLat() {
-        return lat;
-    }
-
-    public void setLat(double lat) {
-        this.lat = lat;
+    public IPoint(double lng, double lat) {
+        mLng = lng;
+        mLat = lat;
     }
 
     public double getLng() {
-        return lng;
+        return mLng;
     }
 
-    public void setLng(double lng) {
-        this.lng = lng;
+    public double getLat() {
+        return mLat;
     }
 }

@@ -1,7 +1,6 @@
 package com.campus.system.status.model;
 
 public class Status {
-    private long mId;
     private String mStatusId;
     private String mCreatorId;
     private String mVisibleTagId;//此动态属于那个标签下可见的
@@ -26,5 +25,93 @@ public class Status {
     public static interface StatuesStatus{
         public static final int NONE = 0;
         public static final int DELETED = 1;
+    }
+
+    public String getStatusId() {
+        return mStatusId;
+    }
+
+    public void setStatusId(String statusId) {
+        mStatusId = statusId;
+    }
+
+    public String getCreatorId() {
+        return mCreatorId;
+    }
+
+    public void setCreatorId(String creatorId) {
+        mCreatorId = creatorId;
+    }
+
+    public String getVisibleTagId() {
+        return mVisibleTagId;
+    }
+
+    public void setVisibleTagId(String visibleTagId) {
+        mVisibleTagId = visibleTagId;
+    }
+
+    public String getGoneTagId() {
+        return mGoneTagId;
+    }
+
+    public void setGoneTagId(String goneTagId) {
+        mGoneTagId = goneTagId;
+    }
+
+    public long getCreateTime() {
+        return mCreateTime;
+    }
+
+    public void setCreateTime(long createTime) {
+        mCreateTime = createTime;
+    }
+
+    public int getStatusType() {
+        return mStatusType;
+    }
+
+    public void setStatusType(int statusType) {
+        mStatusType = statusType;
+    }
+
+    public String getStatusContent() {
+        return mStatusContent;
+    }
+
+    public void setStatusContent(String statusContent) {
+        mStatusContent = statusContent;
+    }
+
+    public String getAddress() {
+        return mAddress;
+    }
+
+    public void setAddress(String address) {
+        mAddress = address;
+    }
+
+    public double getLng() {
+        return mLng;
+    }
+
+    public void setLng(double lng) {
+        mLng = lng;
+    }
+
+    public double getLat() {
+        return mLat;
+    }
+
+    public void setLat(double lat) {
+        mLat = lat;
+    }
+
+    public int getStatus() {
+        return mStatus;
+    }
+
+    public void setStatus(int status) {
+        mStatus = status;
     }
 }

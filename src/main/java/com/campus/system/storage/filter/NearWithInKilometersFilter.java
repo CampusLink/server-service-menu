@@ -15,4 +15,20 @@ public class NearWithInKilometersFilter extends IFilter {
         mLngName = lngName;
         mKilometer = kilometer;
     }
+
+    public IPoint getPoint() {
+        return mPoint;
+    }
+
+    public String getLatName() {
+        return mLatName;
+    }
+
+    public String getLngName() {
+        return mLngName;
+    }
+
+    public int getKilometer() {
+        return mKilometer;
+    }
 }

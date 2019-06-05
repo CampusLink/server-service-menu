@@ -6,12 +6,19 @@ package com.campus.system.storage.filter;
  */
 public class EndWithFilter extends IFilter{
     private String key;
-    private Object value;
+    private String value;
 
-    public EndWithFilter(String key, Object value) {
+    public EndWithFilter(String key, String value) {
         this.tag = "endWith";
         this.key = key;
         this.value = value;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }

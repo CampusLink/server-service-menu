@@ -6,12 +6,19 @@ package com.campus.system.storage.filter;
  */
 public class ContainFilter extends IFilter{
     private String key;
-    private Object value;
+    private String value;
 
-    public ContainFilter(String key, Object value) {
+    public ContainFilter(String key, String value) {
         this.tag = "like";
         this.key = key;
         this.value = value;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }
