@@ -1,15 +1,17 @@
 package com.campus.system.storage.filter;
 
 
+import java.util.List;
+
 /**
  * Created by lj88868 on 2016/6/8.
  */
-public class ContainFilter extends IFilter{
+public class NotContainedInFilter extends IFilter{
     private String key;
-    private String value;
+    private List value;
 
-    public ContainFilter(String key, String value) {
-        this.tag = "like";
+    public NotContainedInFilter(String key, List value) {
+        this.tag = "not in";
         this.key = key;
         this.value = value;
     }
@@ -18,7 +20,7 @@ public class ContainFilter extends IFilter{
         return key;
     }
 
-    public String getValue() {
+    public List getValue() {
         return value;
     }
 }

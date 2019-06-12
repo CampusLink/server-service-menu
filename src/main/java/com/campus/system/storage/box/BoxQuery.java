@@ -73,7 +73,7 @@ public class BoxQuery<T> {
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereGreaterThanEqualTo(Property key, Object value){
+    public BoxQuery whereGreaterThanOrEqualTo(Property key, Object value){
         GreaterThanEqualToFilter gtetf = new GreaterThanEqualToFilter(key.getNameInDb(), value);
         mFilters.add(gtetf);
         return this;
@@ -84,31 +84,43 @@ public class BoxQuery<T> {
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereLessThanEqualTo(Property key, Object value){
+    public BoxQuery whereLessThanOrEqualTo(Property key, Object value){
         LessThanEqualToFilter ltetf = new LessThanEqualToFilter(key.getNameInDb(), value);
         mFilters.add(ltetf);
         return this;
     }
 
     /**
-     * 添加查询条件 where key like '%value%'
+     * 添加查询条件 in
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereContains(Property key, String value){
-        ContainFilter cf = new ContainFilter(key.getNameInDb(), value);
+    public BoxQuery whereContainedIn(Property key, List value){
+        ContainedInFilter cf = new ContainedInFilter(key.getNameInDb(), value);
         mFilters.add(cf);
         return this;
     }
 
     /**
-     * 添加查询条件 where objectId not in (select * from className where key like '%value%')
+     * 不包含 not in
+     * @param key
+     * @param value
+     * @return
+     */
+    public BoxQuery whereNotContainedIn(Property key, List value){
+        NotContainedInFilter ncf = new NotContainedInFilter(key.getNameInDb(), value);
+        mFilters.add(ncf);
+        return this;
+    }
+
+    /**
+     * 添加查询条件 (select * from className where key like '%value%')
      * @param key 属性
      * @param value 属性值
      */
-    public BoxQuery whereNotContains(Property key, String value){
-        NotContainFilter ncf = new NotContainFilter(key.getNameInDb(), value);
-        mFilters.add(ncf);
+    public BoxQuery whereContains(Property key, String value){
+        ContainsFilter cf = new ContainsFilter(key.getNameInDb(), value);
+        mFilters.add(cf);
         return this;
     }
     /**

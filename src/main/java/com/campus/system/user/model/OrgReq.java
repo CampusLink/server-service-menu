@@ -1,13 +1,34 @@
 package com.campus.system.user.model;
 
+import com.campus.system.storage_annotation.annotation.*;
+import com.campus.system.storage_annotation.model.Date;
+
+@Enity
 public class OrgReq {
+    @Id
+    private long mId;
+    @StringProperty(nameInDb = "orgReqId", desc = "请求的ID")
     private String mOrgReqId;
+    @StringProperty(nameInDb = "userId")
     private String mUserId;
+    @StringProperty(nameInDb = "orgId", desc = "组织的ID")
     private String mOrgId;
-    private String mOrgDesc;
-    private long mCreateTime;
+    @StringProperty(nameInDb = "comment", desc = "请求加入组织的备注")
+    private String mComment;
+    @DateProperty(nameInDb = "createTime", desc = "请求创建时间")
+    private Date mCreateTime;
+    @IntProperty(nameInDb = "status", desc = "当前请求的状态", defaultValue = OrgReqStatus.NONE)
     private int mStatus;
-    private String mAdminId;//那个管理员操作的
+    @StringProperty(nameInDb = "adminId", desc = "哪个管理员操作的")
+    private String mAdminId;
+
+    public long getId() {
+        return mId;
+    }
+
+    public void setId(long id) {
+        mId = id;
+    }
 
     public String getOrgReqId() {
         return mOrgReqId;
@@ -33,19 +54,19 @@ public class OrgReq {
         mOrgId = orgId;
     }
 
-    public String getOrgDesc() {
-        return mOrgDesc;
+    public String getComment() {
+        return mComment;
     }
 
-    public void setOrgDesc(String orgDesc) {
-        mOrgDesc = orgDesc;
+    public void setComment(String comment) {
+        mComment = comment;
     }
 
-    public long getCreateTime() {
+    public Date getCreateTime() {
         return mCreateTime;
     }
 
-    public void setCreateTime(long createTime) {
+    public void setCreateTime(Date createTime) {
         mCreateTime = createTime;
     }
 

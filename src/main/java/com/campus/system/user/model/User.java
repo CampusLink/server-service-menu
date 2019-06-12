@@ -2,8 +2,7 @@ package com.campus.system.user.model;
 
 
 import com.campus.system.storage_annotation.annotation.*;
-
-import java.util.Date;
+import com.campus.system.storage_annotation.model.Date;
 
 @Enity(name = "user")
 public class User {
@@ -17,7 +16,7 @@ public class User {
     private String mPassword;
     @StringProperty(nameInDb = "name", length = 10)
     private String mName;
-    @DateProperty(nameInDb = "birth")
+    @DateProperty(nameInDb = "birth", defalutValue = {1985, 01, 01})
     private Date mBirth;
     @IntProperty(nameInDb = "sex")
     private int mSex;

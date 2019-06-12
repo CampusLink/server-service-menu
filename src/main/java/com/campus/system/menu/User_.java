@@ -2,6 +2,7 @@ package com.campus.system.menu;
 
 import com.campus.system.storage.ResultSet.ResultSet;
 import com.campus.system.storage.box.EnityCursor;
+import com.campus.system.storage_annotation.model.Date;
 import com.campus.system.storage_annotation.property.DateProperty;
 import com.campus.system.storage_annotation.property.Id;
 import com.campus.system.storage_annotation.property.IntProperty;
@@ -23,7 +24,7 @@ public class User_ extends EnityCursor<User> {
 
   public static StringProperty mName =  new StringProperty("name", "","", 10);
 
-  public static DateProperty mBirth =  new DateProperty("birth", "");
+  public static DateProperty mBirth =  new DateProperty("birth", "", new Date(1985, 1, 1));
 
   public static IntProperty mSex =  new IntProperty("sex", "",0, false);
 
