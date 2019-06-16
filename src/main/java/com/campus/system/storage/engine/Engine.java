@@ -8,7 +8,7 @@ import com.campus.system.storage_annotation.property.Id;
 import java.util.List;
 
 public abstract class Engine {
-    public abstract <T> T save(T t, Box<T> box, ConnectionPool pool);
+    public abstract <T> long save(T t, Box<T> box, ConnectionPool pool);
 
     public abstract <T> T remove(T t, Box<T> box, ConnectionPool pool);
 

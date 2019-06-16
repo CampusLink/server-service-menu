@@ -1,9 +1,10 @@
 package com.campus.system.user.model;
 
 import com.campus.system.storage_annotation.annotation.*;
-import com.campus.system.storage_annotation.model.Date;
 
-@Enity
+import java.util.Date;
+
+@Enity(name = "orgReq")
 public class OrgReq {
     @Id
     private long mId;

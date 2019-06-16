@@ -2,7 +2,6 @@ package com.campus.system.menu;
 
 import com.campus.system.storage.ResultSet.ResultSet;
 import com.campus.system.storage.box.EnityCursor;
-import com.campus.system.storage_annotation.model.Date;
 import com.campus.system.storage_annotation.property.DateProperty;
 import com.campus.system.storage_annotation.property.Id;
 import com.campus.system.storage_annotation.property.IntProperty;
@@ -10,7 +9,10 @@ import com.campus.system.storage_annotation.property.Property;
 import com.campus.system.storage_annotation.property.StringProperty;
 import com.campus.system.user.model.OrgReq;
 import java.lang.Exception;
+import java.lang.Object;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class OrgReq_ extends EnityCursor<OrgReq> {
@@ -31,7 +33,7 @@ public class OrgReq_ extends EnityCursor<OrgReq> {
   public static StringProperty mAdminId =  new StringProperty("adminId", "哪个管理员操作的","", 225);
 
   public OrgReq_() {
-    super("OrgReq");
+    super("orgReq");
     mEnityClass = OrgReq.class;
     mProperties.add(mId);
     mProperties.add(mOrgReqId);
@@ -80,31 +82,59 @@ public class OrgReq_ extends EnityCursor<OrgReq> {
     while(resultSet.next()){
     OrgReq t = new OrgReq();
     if(keys.contains(mId)){
-    setId(t, resultSet);
+         setId(t, resultSet);
     }
     if(keys.contains(mOrgReqId)){
-    setOrgReqId(t, resultSet);
+         setOrgReqId(t, resultSet);
     }
     if(keys.contains(mUserId)){
-    setUserId(t, resultSet);
+         setUserId(t, resultSet);
     }
     if(keys.contains(mOrgId)){
-    setOrgId(t, resultSet);
+         setOrgId(t, resultSet);
     }
     if(keys.contains(mComment)){
-    setComment(t, resultSet);
+         setComment(t, resultSet);
     }
     if(keys.contains(mCreateTime)){
-    setCreateTime(t, resultSet);
+         setCreateTime(t, resultSet);
     }
     if(keys.contains(mStatus)){
-    setStatus(t, resultSet);
+         setStatus(t, resultSet);
     }
     if(keys.contains(mAdminId)){
-    setAdminId(t, resultSet);
+         setAdminId(t, resultSet);
     }
     list.add(t);
     }
     return list;
   }
+
+  public HashMap<Property, Object> saveBean(OrgReq enity) {
+    HashMap<Property, Object> properties = new HashMap();
+    if(enity.getId()>0){
+         properties.put(mId, enity.getId());
+    }
+    if(enity.getOrgReqId() != null && enity.getOrgReqId().length() > 0){
+         properties.put(mOrgReqId, enity.getOrgReqId());
+    }
+    if(enity.getUserId() != null && enity.getUserId().length() > 0){
+         properties.put(mUserId, enity.getUserId());
+    }
+    if(enity.getOrgId() != null && enity.getOrgId().length() > 0){
+         properties.put(mOrgId, enity.getOrgId());
+    }
+    if(enity.getComment() != null && enity.getComment().length() > 0){
+         properties.put(mComment, enity.getComment());
+    }
+    if(!com.campus.system.storage_annotation.util.DateUtil.dateIsNull(enity.getCreateTime())){
+         properties.put(mCreateTime, enity.getCreateTime());
+    }
+    if(enity.getStatus()>0){
+         properties.put(mStatus, enity.getStatus());
+    }
+    if(enity.getAdminId() != null && enity.getAdminId().length() > 0){
+         properties.put(mAdminId, enity.getAdminId());
+    }
+    return properties;}
 }

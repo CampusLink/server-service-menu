@@ -4,6 +4,7 @@ import com.campus.system.storage.ResultSet.ResultSet;
 import com.campus.system.storage_annotation.property.Property;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public abstract class EnityCursor<T> {
@@ -17,6 +18,8 @@ public abstract class EnityCursor<T> {
     }
 
     public abstract List<T> parseResult(ResultSet resultSet, List<Property> keys) throws Exception;
+
+    public abstract HashMap<Property, Object> saveBean(T t);
 
     public List getProperties() {
         return mProperties;

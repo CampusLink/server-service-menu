@@ -5,6 +5,7 @@ import com.campus.system.storage.ResultSet.ResultSet;
 import com.campus.system.storage_annotation.property.Id;
 import com.campus.system.storage_annotation.property.Property;
 
+import java.util.HashMap;
 import java.util.List;
 
 //此对象映射数据库表
@@ -27,7 +28,7 @@ public class Box<T> {
         mProperties = enityCursor.mProperties;
     }
 
-    public T save(T t) {
+    public long save(T t) {
         return mBoxStore.getEngine().save(t, this, mBoxStore.getPool());
     }
 
@@ -77,5 +78,9 @@ public class Box<T> {
 
     public List<T> parseResult(ResultSet resultSet, List<Property> keys) throws Exception {
         return mEnityCursor.parseResult(resultSet, keys);
+    }
+
+    public HashMap<Property, Object> saveBean(T t){
+        return mEnityCursor.saveBean(t);
     }
 }

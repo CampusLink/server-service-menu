@@ -1,6 +1,6 @@
 package com.campus.system.storage.ResultSet;
 
-import com.campus.system.storage_annotation.model.Date;
+import java.util.Date;
 
 public abstract class ResultSet {
     public abstract String getString(int columnIndex) throws Exception;

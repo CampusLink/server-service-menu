@@ -2,7 +2,8 @@ package com.campus.system.user.model;
 
 
 import com.campus.system.storage_annotation.annotation.*;
-import com.campus.system.storage_annotation.model.Date;
+
+import java.util.Date;
 
 @Enity(name = "user")
 public class User {
@@ -24,8 +25,11 @@ public class User {
     private String mSign;
     @StringProperty(nameInDb = "head")
     private String mHead;
+    @StringProperty(nameInDb = "nickName")
     private String mNickName;
+    @StringProperty(nameInDb = "orgId")
     private String mOrgId;
+    @StringProperty(nameInDb = "orgDesc")
     private String mOrgDesc;
 
     public long getId() {
